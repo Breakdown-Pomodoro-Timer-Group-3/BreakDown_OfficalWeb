@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer | BreakDown</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="Timer.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="timer-title">Pomodoro Timer</h1>
+
+        <!-- Task Input -->
+        <div class="task-container">
+            <label for="taskInput">Current Task:</label>
+            <input type="text" id="taskInput" placeholder="Enter your task..." />
+        </div>
+
+        <!-- Timer Display with Progress -->
+        <div class="timer-circle">
+            <div id="circleProgress" class="progress-circle">
+                <span id="timerDisplay">25:00</span>
+            </div>
+        </div>
+
+        <!-- Session Counter -->
+        <p id="sessionCounter">Session: 1 / 4</p>
+
+        <!-- Timer Controls -->
+        <div class="timer-controls">
+            <button id="startPauseBtn">Start</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-container">
+            <h2>Today's Progress</h2>
+            <p>Completed Pomodoros: <span id="pomodoroCount">0</span></p>
+        </div>
+
+        <!-- Quote Display -->
+        <div class="quote-container">
+            <p id="quoteText">"Stay focused and never give up!"</p>
+        </div>
+
+        <!-- Upcoming Tasks -->
+        <div class="task-list">
+            <h2>Upcoming Tasks</h2>
+            <input type="text" id="newTask" placeholder="Add a new task..." />
+            <button id="addTaskBtn">Add</button>
+            <ul id="taskList"></ul>
+        </div>
+
+        <!-- Dark Mode Toggle -->
+        <div class="theme-switch">
+            <button id="toggleTheme">🌙 Dark Mode</button>
+        </div>
+
+        <!-- Music Player Icon (Redirects to Spotify) -->
+        <div class="music-icon">
+            <a href="https://open.spotify.com" target="_blank">
+                <img src="Spotify_Primary_Logo_RGB_Green.png" alt="Spotify" />
+            </a>
+        </div>
+
+        <!-- Settings Icon (Opens Panel) -->
+        <div class="settings-icon" onclick="toggleSettings()">
+            ⚙️
+        </div>
+
+        <!-- Settings Panel (Hidden by Default) -->
+        <div class="settings-panel" id="settingsPanel">
+            <h2>Settings</h2>
+            <label for="workTime">Work Duration (minutes):</label>
+            <input type="number" id="workTime" value="25" />
+
+            <label for="breakTime">Break Duration (minutes):</label>
+            <input type="number" id="breakTime" value="5" />
+
+            <label for="longBreakTime">Long Break Duration (minutes):</label>
+            <input type="number" id="longBreakTime" value="15" />
+
+            <button id="saveSettings">Save</button>
+            <button onclick="toggleSettings()">Close</button>
+        </div>
+    </div>
+</body>
+</html>
