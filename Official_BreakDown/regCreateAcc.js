@@ -19,47 +19,38 @@ const auth = getAuth();
 const db = getFirestore();
 
 // Clear form fields when page loads
-window.onload = () => {
-    document.getElementById('fullname').value = "";
-    document.getElementById('email').value = "";
-    document.getElementById('password').value = "";
-    document.getElementById('confirm_password').value = "";
-};
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("fullname").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("confirm_password").value = "";
+});
 
 // Listen for the signup event
 document.getElementById('submitSignup').addEventListener("click", async (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
-    // Fetch input values **after** button click
     const fullname = document.getElementById('fullname').value.trim();
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
     const confirm_password = document.getElementById('confirm_password').value.trim();
 
-    // Password validation
     if (password !== confirm_password) {
         alert("Passwords do not match!");
         return;
     }
 
     try {
-        // Create the user in Firebase Auth
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        console.log("User created:", user);
 
         // Save user info in Firestore
-        await setDoc(doc(db, "users", user.uid), {
-            email: email,
-            fullname: fullname
-        });
+        await setDoc(doc(db, "users", user.uid), { email, fullname });
 
         alert("Account created successfully! Redirecting to login...");
-        console.log("Redirecting to Login.html...");
-        window.location.href = "Login.html"; // Redirect to login page
+        window.location.href = "Login.html"; 
 
     } catch (error) {
         alert(error.message);
-        console.error("Error during registration:", error);
     }
 });
