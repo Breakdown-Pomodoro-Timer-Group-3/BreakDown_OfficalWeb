@@ -15,12 +15,12 @@
 </head>
 <body>
     <div class="container">
-        <div class="login-box">
-            <img src="CatLogoImage.png" alt="BreakDown Logo" class="logo-img"> <!-- Replace with actual logo file -->
+        <div class="auth-box">
+            <img src="CatLogoImage.png" alt="BreakDown Logo" class="logo-img"> 
             <h1 class="logo">BreakDown</h1>
 
             <form id="loginForm" autocomplete="off">
-                <input type="email" id="email" placeholder="Email" autocomplete="off" required>
+                <input type="email" id="email" placeholder="Email" autocomplete="new-email" required>
                 <input type="password" id="password" placeholder="Password" autocomplete="new-password" required>
 
                 <button type="submit" id="submit">Log in</button>
@@ -29,13 +29,5 @@
             </form>
         </div>
     </div>
-
-    <script>
-        // Clear input fields on page load to prevent autofill
-        window.onload = () => {
-            document.getElementById('email').value = "";
-            document.getElementById('password').value = "";
-        };
-    </script>
 </body>
 </html>
